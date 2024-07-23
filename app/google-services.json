@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "35018291283",
+    "project_id": "bruteit-c9a85",
+    "storage_bucket": "bruteit-c9a85.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:35018291283:android:2a5b9de2d42606dc88eea6",
+        "android_client_info": {
+          "package_name": "com.ironclad.brute"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARGzpJimxMAOUJbShejxWDgDddCloEjR4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
