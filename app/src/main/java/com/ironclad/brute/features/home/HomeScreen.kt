@@ -17,12 +17,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.ironclad.brute.core.ScreenSearch
 import com.ironclad.brute.core.designsystem.components.BruteSearchbar
 import com.ironclad.brute.core.designsystem.theme.Black
 import com.ironclad.brute.core.designsystem.theme.fontFamily
 
 @Composable
-fun HomeScreen(modifier: Modifier = Modifier) {
+fun HomeScreen(
+    modifier: Modifier = Modifier,
+    navController: NavController
+) {
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -32,8 +38,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
         Column {
             Text(text = "Brute.", fontFamily = fontFamily, fontSize = 31.sp, color = Color.White, fontWeight = FontWeight.SemiBold)
             Spacer(modifier = Modifier.height(28.dp))
-            BruteSearchbar(hint = "Search")
+            BruteSearchbar(hint = "Search", onClick = { navController.navigate(ScreenSearch) } )
         }
     }
-
 }

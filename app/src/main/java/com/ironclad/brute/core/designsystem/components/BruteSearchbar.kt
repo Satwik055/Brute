@@ -1,5 +1,6 @@
 package com.ironclad.brute.core.designsystem.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -31,11 +32,12 @@ import com.ironclad.brute.core.designsystem.theme.robotoMono
 fun BruteSearchbar(
     modifier: Modifier = Modifier,
     hint:String,
-) {
+    onClick: () -> Unit,
+    ) {
     var foo = ""
 
     TextField(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth().clickable { onClick() },
         shape = RoundedCornerShape(1.dp),
         value = foo,
         onValueChange = {foo = it },
@@ -48,5 +50,5 @@ fun BruteSearchbar(
 @Preview
 @Composable
 fun SearchbarPreview(modifier: Modifier = Modifier) {
-    BruteSearchbar(hint = "Search")
+    BruteSearchbar(hint = "Search", onClick = { TODO() })
 }

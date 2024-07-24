@@ -12,6 +12,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
@@ -37,12 +38,14 @@ fun BruteSearchView(
     }
 
     TextField(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier
+            .fillMaxWidth()
+            .focusRequester(focusRequester),
         value = value,
         onValueChange = onValueChange,
         placeholder = { Text(text = hint, fontFamily = fontFamily, color = Hint) },
         singleLine = true,
-        colors = TextFieldDefaults.colors(focusedContainerColor = Color.Transparent, unfocusedContainerColor = Color.Transparent, unfocusedIndicatorColor = Color.White, focusedIndicatorColor = Color.White),
+        colors = TextFieldDefaults.colors(focusedTextColor = Color.White, unfocusedTextColor = Color.White,focusedContainerColor = Color.Transparent, cursorColor = Color.White, unfocusedContainerColor = Color.Transparent, unfocusedIndicatorColor = Color.White, focusedIndicatorColor = Color.White),
         textStyle = TextStyle(fontFamily = fontFamily, fontSize = 16.sp)
     )
 }
@@ -51,5 +54,5 @@ fun BruteSearchView(
 @Composable
 fun PreviewSearchView(modifier: Modifier = Modifier) {
     var searchText by remember { mutableStateOf("") }
-    BruteSearchView(value = searchText , onValueChange = {searchText = it}, hint = "Search students")
+    BruteSearchView(value = searchText , onValueChange = {searchText = it}, hint = "Tejas is a gudda")
 }
