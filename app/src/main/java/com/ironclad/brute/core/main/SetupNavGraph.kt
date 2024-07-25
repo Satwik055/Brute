@@ -1,17 +1,18 @@
-package com.ironclad.brute.core
+package com.ironclad.brute.core.main
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.ironclad.brute.features.detail.DetailScreen
 import com.ironclad.brute.features.home.HomeScreen
 import com.ironclad.brute.features.search.SearchScreen
 import kotlinx.serialization.Serializable
 
 
 @Composable
-fun SetupNavGraph(modifier: Modifier = Modifier) {
+fun SetupNavGraph() {
     val navController = rememberNavController()
 
     NavHost(
@@ -19,10 +20,13 @@ fun SetupNavGraph(modifier: Modifier = Modifier) {
         startDestination = ScreenHome
     ) {
         composable<ScreenHome>{
-            HomeScreen(modifier = modifier, navController)
+            HomeScreen(navController =navController)
         }
         composable<ScreenSearch>{
-            SearchScreen(modifier = modifier, navController)
+            SearchScreen(navController = navController)
+        }
+        composable<ScreenDetail>{
+            DetailScreen(navController = navController)
         }
     }
 }
@@ -33,4 +37,5 @@ object ScreenHome
 @Serializable
 object ScreenSearch
 
-
+@Serializable
+object ScreenDetail
