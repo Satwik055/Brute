@@ -1,4 +1,4 @@
-package com.ironclad.brute.data.students.data.model
+package com.ironclad.brute.data.students.domain.model
 
 data class Student(
     val password: String = "",
