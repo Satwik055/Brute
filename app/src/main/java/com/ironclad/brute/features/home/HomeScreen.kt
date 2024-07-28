@@ -50,7 +50,7 @@ fun HomeScreen(
                 Text(text = state.error, color = Color.Red)
 
             else -> {
-                val allStudent = state.student.filter { it.studentId.isNotEmpty() }
+                val allStudent = state.student
                 val recentSearches = allStudent.take(3)
                 Content(navController = navController, allStudents = allStudent, recentSearches = recentSearches )
             }

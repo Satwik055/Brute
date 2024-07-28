@@ -9,6 +9,7 @@ import kotlinx.coroutines.tasks.await
 
 class StudentRepositoryImpl:StudentRepository{
 
+    private val studentCollectionRef = Firebase.firestore.collection("Students")
 
     override suspend fun searchStudent(query: String): Student {
         val student = Student(studentName = "PHILLIP JEFFER", roll = "2023/0322", course = "Bcom(Hons)|E")
@@ -29,7 +30,6 @@ class StudentRepositoryImpl:StudentRepository{
     override suspend fun getAllStudent(): List<Student> {
 
         val students = mutableListOf<Student>()
-        val studentCollectionRef = Firebase.firestore.collection("Students")
         val querySnapshot = studentCollectionRef.get().await()
 
         for(document in querySnapshot.documents){
@@ -37,6 +37,17 @@ class StudentRepositoryImpl:StudentRepository{
             student?.let { students.add(student) }
         }
 
-        return students
+        //Filters INVALID_USERNAME
+        val filteredStudents = students.filter { it.studentId.isNotEmpty() }
+
+        return filteredStudents
+    }
+
+    override suspend fun getStudentById(id: String): Student {
+        val docSnapshot = studentCollectionRef.document(id).get().await()
+        if(docSnapshot.exists()){
+            return docSnapshot.toObject<Student>()!!
+        }
+        throw Exception("Student doesn't exist")
     }
 }

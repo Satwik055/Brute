@@ -7,4 +7,6 @@ interface StudentRepository {
     suspend fun searchStudent(query:String):Student
 
     suspend fun getAllStudent():List<Student>
+
+    suspend fun getStudentById(id:String):Student
 }
