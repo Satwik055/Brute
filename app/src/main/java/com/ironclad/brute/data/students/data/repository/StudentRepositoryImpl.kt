@@ -11,28 +11,29 @@ class StudentRepositoryImpl:StudentRepository{
 
     private val studentCollectionRef = Firebase.firestore.collection("Students")
 
-    override suspend fun searchStudent(query: String): Student {
-        val student = Student(studentName = "PHILLIP JEFFER", roll = "2023/0322", course = "Bcom(Hons)|E")
+    override suspend fun searchStudentByName(name: String): List<Student> {
 
-        val st1 = Student(studentName = "PHILLIP JEFFER", roll = "2023/0322", course = "Bcom(Hons)|E")
-        val st2 = Student(studentName = "ERRIE NICON", roll = "2023/0322", course = "Bcom(Hons)|E")
-        val st3 = Student(studentName = "JENIFFER DACOTA", roll = "2023/0322", course = "Bcom(Hons)|E")
-        val st4 = Student(studentName = "PHILLIP JEFFER", roll = "2023/0322", course = "Bcom(Hons)|E")
-        val st5 = Student(studentName = "NICHOLAS TWEEN", roll = "2023/0322", course = "Bcom(Hons)|E")
-        val st6 = Student(studentName = "JEFERY BIGGOT", roll = "2023/0322", course = "Bcom(Hons)|E")
-        val st7 = Student(studentName = "LIAN LO LANG", roll = "2023/0322", course = "Bcom(Hons)|E")
+        val result = mutableListOf<Student>()
+        val querySnapshot = studentCollectionRef.whereGreaterThanOrEqualTo("studentName",name).get().await()
+        val docSnapshots = querySnapshot.documents
 
-        val allStudents  = listOf(st1, st2, st3, st4, st5, st6, st7)
-
-        return student
+        for(document in docSnapshots){
+            val student = document.toObject<Student>()
+            student?.let {
+                result.add(student)
+            }
+        }
+        return result
     }
+
 
     override suspend fun getAllStudent(): List<Student> {
 
         val students = mutableListOf<Student>()
         val querySnapshot = studentCollectionRef.get().await()
+        val docSnapshot = querySnapshot.documents
 
-        for(document in querySnapshot.documents){
+        for(document in docSnapshot){
             val student = document.toObject<Student>()
             student?.let { students.add(student) }
         }

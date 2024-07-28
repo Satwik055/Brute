@@ -4,9 +4,9 @@ import com.ironclad.brute.data.students.domain.model.Student
 
 interface StudentRepository {
 
-    suspend fun searchStudent(query:String):Student
+    suspend fun searchStudentByName(name:String):List<Student>
 
     suspend fun getAllStudent():List<Student>
 
-    suspend fun getStudentById(id:String):Student
+    suspend fun getStudentById(studentId:String):Student
 }

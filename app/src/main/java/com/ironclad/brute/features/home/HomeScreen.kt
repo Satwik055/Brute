@@ -39,24 +39,18 @@ fun HomeScreen(
         modifier = modifier
             .fillMaxSize()
             .padding(16.dp)
-    ){
-        when{
-            state.isLoading->
-                CircularProgressIndicator()
-
-            state.error.isNotBlank() ->
-                Text(text = state.error, color = Color.Red)
-
-            else -> {
-                val allStudent = state.student
-                val recentSearches = allStudent.take(3)
-                Content(navController = navController, allStudents = allStudent, recentSearches = recentSearches )
-            }
-        }
+    )
+    {
+        val allStudent = state.student
+        val recentSearches = allStudent.take(3)
+        Content(
+            navController = navController,
+            allStudents = allStudent,
+            recentSearches = recentSearches
+        )
     }
-
-
 }
+
 
 @Composable
 private fun Content(modifier: Modifier = Modifier, navController: NavController, allStudents:List<Student>, recentSearches:List<Student>) {
