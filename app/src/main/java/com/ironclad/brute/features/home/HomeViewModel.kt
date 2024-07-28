@@ -1,14 +1,9 @@
 package com.ironclad.brute.features.home
 
-import android.app.Application
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.initializer
-import androidx.lifecycle.viewmodel.viewModelFactory
 import com.ironclad.brute.data.students.data.repository.StudentRepositoryImpl
 import com.ironclad.brute.data.students.domain.repository.StudentRepository
 import kotlinx.coroutines.launch

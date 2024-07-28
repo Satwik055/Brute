@@ -1,6 +1,5 @@
 package com.ironclad.brute.features.home
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -8,8 +7,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -18,16 +15,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.ironclad.brute.core.designsystem.components.BruteListItem
-import com.ironclad.brute.core.main.ScreenSearch
 import com.ironclad.brute.core.designsystem.components.BruteSearchbar
-import com.ironclad.brute.core.designsystem.theme.Black
 import com.ironclad.brute.core.designsystem.theme.fontFamily
-import com.ironclad.brute.core.designsystem.theme.onSurface
 import com.ironclad.brute.core.main.ScreenDetail
+import com.ironclad.brute.core.main.ScreenSearch
 import com.ironclad.brute.data.students.domain.model.Student
 import com.ironclad.brute.features.home.sections.AllStudentSection
 import com.ironclad.brute.features.home.sections.RecentSection
@@ -42,6 +35,8 @@ fun HomeScreen(
     val homeViewModel: HomeViewModel = viewModel()
     val state = homeViewModel.allStudentState.value
 
+    print(state)
+
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -55,7 +50,7 @@ fun HomeScreen(
                 Text(text = state.error, color = Color.Red)
 
             else -> {
-                val allStudent = state.student
+                val allStudent = state.student.filter { it.studentId.isNotEmpty() }
                 val recentSearches = allStudent.take(3)
                 Content(navController = navController, allStudents = allStudent, recentSearches = recentSearches )
             }
