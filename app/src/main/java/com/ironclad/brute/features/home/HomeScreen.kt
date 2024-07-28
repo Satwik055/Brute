@@ -35,8 +35,6 @@ fun HomeScreen(
     val homeViewModel: HomeViewModel = viewModel()
     val state = homeViewModel.allStudentState.value
 
-    print(state)
-
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -72,13 +70,13 @@ private fun Content(modifier: Modifier = Modifier, navController: NavController,
         Text(text = "Recent", fontFamily = fontFamily, fontSize = 16.sp, color = Color.White)
         Spacer(modifier = Modifier.height(10.dp))
 
-        RecentSection(recentSearches = recentSearches)
+        RecentSection(recentSearches = recentSearches, navController = navController)
         Spacer(modifier = Modifier.height(40.dp))
 
         Text(text = "All", fontFamily = fontFamily, fontSize = 16.sp, color = Color.White)
         Spacer(modifier = Modifier.height(10.dp))
 
-        AllStudentSection(allStudents = allStudents)
+        AllStudentSection(allStudents = allStudents, navController = navController)
 
     }
 

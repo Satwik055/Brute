@@ -43,10 +43,12 @@ class StudentRepositoryImpl:StudentRepository{
         return filteredStudents
     }
 
-    override suspend fun getStudentById(id: String): Student {
-        val docSnapshot = studentCollectionRef.document(id).get().await()
+    override suspend fun getStudentById(studentId: String): Student {
+
+        val docSnapshot = studentCollectionRef.whereEqualTo("studentId",studentId).get().await().first()
+
         if(docSnapshot.exists()){
-            return docSnapshot.toObject<Student>()!!
+            return docSnapshot.toObject<Student>()
         }
         throw Exception("Student doesn't exist")
     }

@@ -1,5 +1,6 @@
 package com.ironclad.brute.core.designsystem.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -27,6 +28,7 @@ import com.ironclad.brute.core.designsystem.theme.fontFamily
 @Composable
 fun BruteListItem(
     modifier: Modifier = Modifier,
+    onClick: () -> Unit,
     name:String,
     roll:String,
     course:String
@@ -35,7 +37,8 @@ fun BruteListItem(
         modifier = modifier
             .fillMaxWidth()
             .bottomBorder(1.dp, Grey)
-            .padding(vertical = 12.dp),
+            .padding(vertical = 12.dp)
+            .clickable { onClick.invoke() },
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
 
@@ -55,7 +58,7 @@ fun BruteListItem(
 @Preview
 @Composable
 fun PreviewBruteListItem(modifier: Modifier = Modifier) {
-    BruteListItem(name= "JOHN DOE", roll = "2023/3434", course = "Bcom(Hons)|E" )
+    BruteListItem(name= "JOHN DOE", roll = "2023/3434", course = "Bcom(Hons)|E" , onClick = TODO())
 }
 
 fun Modifier.bottomBorder(strokeWidth: Dp, color: Color) = composed(

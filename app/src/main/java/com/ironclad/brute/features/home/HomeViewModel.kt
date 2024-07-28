@@ -14,7 +14,7 @@ class HomeViewModel:ViewModel(){
     private val studentRepository: StudentRepository = StudentRepositoryImpl()
 
     private val _allStudentState = mutableStateOf(AllStudentState())
-    val allStudentState: State<AllStudentState> = _allStudentState
+    val allStudentState = _allStudentState
 
     init {
         getAllStudent()

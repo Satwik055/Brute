@@ -12,6 +12,7 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
@@ -23,11 +24,16 @@ import com.ironclad.brute.core.designsystem.theme.BruteTheme
 import com.ironclad.brute.data.students.domain.model.Student
 
 @Composable
-fun DetailScreen(modifier: Modifier = Modifier, navController: NavController) {
+fun DetailScreen(modifier: Modifier = Modifier, navController: NavController, studentId:String) {
     
     val viewModel:DetailScreenViewModel = viewModel()
     val state = viewModel.detailScreenState.value
-    
+
+    //TODO: This is sussy af
+    LaunchedEffect(Unit) {
+        viewModel.getStudentById(studentId)
+    }
+
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -38,8 +44,9 @@ fun DetailScreen(modifier: Modifier = Modifier, navController: NavController) {
                 state.isLoading->
                     CircularProgressIndicator()
 
-                state.error.isNotBlank() ->
+                state.error.isNotBlank() -> {
                     Text(text = state.error, color = Color.Red)
+                }
 
                 else -> {
                     val student = state.student
@@ -66,7 +73,6 @@ private fun Content(modifier: Modifier = Modifier, navController: NavController,
     val admissionDate = student.admissionDate
     val dob = student.dob
     val sakshamPassword = student.password
-    val studentId = student.studentId
     val studentType = student.studentType
     val enrollmentNo = student.enrollmentNo
 
@@ -102,7 +108,6 @@ private fun Content(modifier: Modifier = Modifier, navController: NavController,
         ) {
             Spacer(modifier = Modifier.height(50.dp))
             Text(text = "Saksham password: $sakshamPassword", style = MaterialTheme.typography.bodySmall)
-            Text(text = "Student ID: $studentId", style = MaterialTheme.typography.bodySmall)
             Text(text = "Student type: $studentType", style = MaterialTheme.typography.bodySmall)
             Text(text = "Enrollment no: $enrollmentNo", style = MaterialTheme.typography.bodySmall)
 

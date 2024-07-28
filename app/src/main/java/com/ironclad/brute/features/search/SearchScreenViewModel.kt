@@ -13,7 +13,7 @@ class SearchScreenViewModel:ViewModel() {
     private val repository:StudentRepository = StudentRepositoryImpl()
 
     private val _studentState = mutableStateOf(StudentState())
-    val studentState: State<StudentState> = _studentState
+    val studentState = _studentState
 
     fun searchStudent(query: String) {
         viewModelScope.launch {

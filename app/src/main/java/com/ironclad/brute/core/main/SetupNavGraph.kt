@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.toRoute
 import com.ironclad.brute.features.detail.DetailScreen
 import com.ironclad.brute.features.home.HomeScreen
 import com.ironclad.brute.features.search.SearchScreen
@@ -25,7 +26,8 @@ fun SetupNavGraph() {
             SearchScreen(navController = navController)
         }
         composable<ScreenDetail>{
-            DetailScreen(navController = navController)
+            val args = it.toRoute<ScreenDetail>()
+            DetailScreen(navController = navController, studentId = args.studentId)
         }
     }
 }
@@ -37,4 +39,6 @@ object ScreenHome
 object ScreenSearch
 
 @Serializable
-object ScreenDetail
+data class ScreenDetail(
+    val studentId:String
+)
