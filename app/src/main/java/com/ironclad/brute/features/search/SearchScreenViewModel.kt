@@ -7,8 +7,12 @@ import com.ironclad.brute.data.students.data.repository.exceptions.SearchQueryEm
 import com.ironclad.brute.data.students.data.repository.StudentRepositoryImpl
 import com.ironclad.brute.data.students.data.repository.exceptions.NoResultFound
 import com.ironclad.brute.data.students.domain.repository.StudentRepository
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.launch
 
 class SearchScreenViewModel:ViewModel() {

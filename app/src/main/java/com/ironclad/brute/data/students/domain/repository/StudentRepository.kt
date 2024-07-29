@@ -8,5 +8,5 @@ interface StudentRepository {
 
     suspend fun getAllStudent():List<Student>
 
-    suspend fun getStudentById(studentId:String):Student
+    suspend fun getStudentById(studentId:String): Student
 }

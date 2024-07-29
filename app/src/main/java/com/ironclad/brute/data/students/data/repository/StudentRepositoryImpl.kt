@@ -14,7 +14,7 @@ class StudentRepositoryImpl:StudentRepository{
     override suspend fun searchStudentByName(name: String): List<Student> {
 
         val result = mutableListOf<Student>()
-        val querySnapshot = studentCollectionRef.whereGreaterThanOrEqualTo("studentName",name).get().await()
+        val querySnapshot = studentCollectionRef.whereGreaterThanOrEqualTo("studentName",name).whereLessThan("studentName",name + "\uf8ff").get().await()
         val docSnapshots = querySnapshot.documents
 
         for(document in docSnapshots){
@@ -47,10 +47,10 @@ class StudentRepositoryImpl:StudentRepository{
     override suspend fun getStudentById(studentId: String): Student {
 
         val docSnapshot = studentCollectionRef.whereEqualTo("studentId",studentId).get().await().first()
-
         if(docSnapshot.exists()){
-            return docSnapshot.toObject<Student>()
+            val student = docSnapshot.toObject<Student>()
+            return student
         }
-        throw Exception("Student doesn't exist")
+        return Student()
     }
 }
