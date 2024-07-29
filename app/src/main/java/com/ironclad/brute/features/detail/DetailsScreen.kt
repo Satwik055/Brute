@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -22,6 +23,7 @@ import androidx.navigation.NavController
 import com.ironclad.brute.core.designsystem.components.BruteButton
 import com.ironclad.brute.core.designsystem.theme.BruteTheme
 import com.ironclad.brute.data.students.domain.model.Student
+import java.util.Locale
 
 @Composable
 fun DetailScreen(modifier: Modifier = Modifier, navController: NavController, studentId:String) {
@@ -59,7 +61,7 @@ fun DetailScreen(modifier: Modifier = Modifier, navController: NavController, st
 }
 
 @Composable
-private fun Content(modifier: Modifier = Modifier, navController: NavController, student:Student) {
+private fun Content(navController: NavController, student:Student) {
 
     val name = student.studentName.uppercase()
     val roll=  student.roll
@@ -68,8 +70,8 @@ private fun Content(modifier: Modifier = Modifier, navController: NavController,
     val course = student.course
     val address = student.address
     val gender = student.gender
-    val fatherName = student.fatherName
-    val mothersName = student.motherName
+    val fatherName = student.fatherName.capitalize(Locale.getDefault())
+    val mothersName = student.motherName.capitalize(Locale.getDefault())
     val admissionDate = student.admissionDate
     val dob = student.dob
     val sakshamPassword = student.password

@@ -63,12 +63,13 @@ private fun Content(navController: NavController) {
             hint = "Search students",
             autoFocus = true
         )
-
         when {
             state.isLoading -> CircularProgressIndicator()
-            state.error.isNotEmpty() -> Text(text = state.error, color = Color.Red)
+            state.error.isNotEmpty() -> Text(text = state.error, color = Color.Red, modifier = Modifier.align(Alignment.CenterHorizontally))
             state.student.isNotEmpty() -> SearchResultsSection(searchResult = state.student, navController = navController)
         }
+
+
     }
 }
 

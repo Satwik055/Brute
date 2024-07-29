@@ -30,7 +30,7 @@ fun AllStudentSection(
     ) {
         itemsIndexed(allStudents){index, student->
             BruteListItem(
-                name = student.studentName,
+                name = student.studentName.uppercase(),
                 roll = student.roll,
                 course = student.course,
                 onClick = { navController.navigate(ScreenDetail(student.studentId))}

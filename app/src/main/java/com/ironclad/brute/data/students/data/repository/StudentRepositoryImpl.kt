@@ -14,7 +14,8 @@ class StudentRepositoryImpl:StudentRepository{
     override suspend fun searchStudentByName(name: String): List<Student> {
 
         val result = mutableListOf<Student>()
-        val querySnapshot = studentCollectionRef.whereGreaterThanOrEqualTo("studentName",name).whereLessThan("studentName",name + "\uf8ff").get().await()
+
+        val querySnapshot = studentCollectionRef.whereGreaterThanOrEqualTo("studentName", name).whereLessThan("studentName",name + "\uf8ff").get().await()
         val docSnapshots = querySnapshot.documents
 
         for(document in docSnapshots){

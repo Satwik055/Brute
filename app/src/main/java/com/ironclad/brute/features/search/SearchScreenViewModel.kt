@@ -40,7 +40,10 @@ class SearchScreenViewModel:ViewModel() {
             searchText.debounce(500).collectLatest { input->
                 _searchResultState.value = SearchResultState(isLoading = true)
                 try{
-                    val student = repository.searchStudentByName(input)
+
+                    // Names in firestore are stored in lowercase
+                    val lowercaseInput = input.lowercase()
+                    val student = repository.searchStudentByName(lowercaseInput)
                     when{
                         input.isEmpty() -> throw SearchQueryEmpty()
                         student.isEmpty() -> throw NoResultFound()
