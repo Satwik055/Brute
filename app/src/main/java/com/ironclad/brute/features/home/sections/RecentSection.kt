@@ -27,6 +27,7 @@ fun RecentSection(
     LazyColumn(
         modifier = modifier
             .background(color = onSurface)
+            .padding(horizontal = 16.dp)
     ) {
         itemsIndexed(recentSearches){index, student->
             BruteListItem(

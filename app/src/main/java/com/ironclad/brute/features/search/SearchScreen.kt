@@ -28,6 +28,8 @@ import com.ironclad.brute.core.designsystem.theme.onSurface
 import com.ironclad.brute.core.main.ScreenDetail
 import com.ironclad.brute.data.students.domain.model.Student
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.runBlocking
 
 @Composable
 fun SearchScreen(
@@ -44,18 +46,19 @@ fun SearchScreen(
 }
 
 @Composable
-private fun Content(modifier: Modifier = Modifier, navController: NavController) {
+private fun Content(navController: NavController) {
 
     val viewModel:SearchScreenViewModel = viewModel()
     var searchText by remember { mutableStateOf("") }
     val state = viewModel.searchResultState.value
+
 
     Column {
         BruteSearchView(
             value = searchText,
             onValueChange = {
                 searchText = it
-                viewModel.searchStudentByName(searchText)
+                viewModel.onSearchTextChange(searchText)
             },
             hint = "Search students",
             autoFocus = true
