@@ -36,9 +36,9 @@ fun BruteListItem(
     Row (
         modifier = modifier
             .fillMaxWidth()
-            .bottomBorder(1.dp, Grey)
-            .padding(vertical = 12.dp)
-            .clickable { onClick.invoke() },
+            .clickable { onClick.invoke() }
+            .padding(vertical = 12.dp),
+
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
 
