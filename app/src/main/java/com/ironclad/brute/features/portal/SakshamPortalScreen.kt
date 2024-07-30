@@ -58,7 +58,7 @@ fun SakshamPortalScreen() {
             Text(text = sessionCookieState.error)
         }
         if(!sessionCookieState.cookie.isNullOrEmpty()){
-            SakshamPortalWebView(sessionCookie = sessionCookieState.cookie)
+            SakshamPortalWebView(sessionCookie = "aziac5dazjfxz2kiaebvdvtq")
         }
 
     }
@@ -99,11 +99,20 @@ private fun SakshamPortalWebView(sessionCookie:String) {
                     settings.loadWithOverviewMode = true
                     settings.useWideViewPort = true
                     settings.setSupportZoom(true)
+                    settings.domStorageEnabled = true
                     layoutParams =
                         ViewGroup.LayoutParams(
                             ViewGroup.LayoutParams.MATCH_PARENT,
                             ViewGroup.LayoutParams.MATCH_PARENT
                         )
+                    val cookieManager = CookieManager.getInstance()
+                    cookieManager.removeAllCookie()
+                    cookieManager.setAcceptCookie(true)
+                    cookieManager.acceptCookie()
+                    cookieManager.acceptThirdPartyCookies(this)
+                    cookieManager.setCookie(url, "ASP.NET_SessionId=$sessionCookie")
+                    println("Set cookie: ${cookieManager.getCookie(url)}")
+
                     loadUrl(url, headers)
                 }
             },

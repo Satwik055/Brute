@@ -4,6 +4,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.NavHostController
 import com.ironclad.brute.data.students.data.repository.StudentRepositoryImpl
 import com.ironclad.brute.data.students.domain.repository.StudentRepository
 import kotlinx.coroutines.launch

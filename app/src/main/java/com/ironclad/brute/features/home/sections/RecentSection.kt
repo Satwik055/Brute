@@ -34,7 +34,7 @@ fun RecentSection(
                 name = student.studentName.uppercase(),
                 roll = student.roll,
                 course = student.course,
-                onClick = { navController.navigate(ScreenDetail(student.studentId))}
+                onClick = { navController.navigate(ScreenDetail(student.studentId)) }
             )
             if (index < recentSearches.lastIndex)
                 Divider(thickness = Dp.Hairline, color = Grey)
