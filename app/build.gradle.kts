@@ -71,4 +71,10 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation(libs.kotlinx.serialization.json)
+
+    //Ktor
+    implementation (libs.ktor.core)
+    implementation (libs.ktor.cio)
+
+
 }

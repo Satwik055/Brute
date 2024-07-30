@@ -15,7 +15,7 @@ class DetailScreenViewModel:ViewModel() {
     private val repository: StudentRepository = StudentRepositoryImpl()
 
     private val _detailScreenState = mutableStateOf(DetailScreenState())
-    val detailScreenState = _detailScreenState
+    val detailScreenState:State<DetailScreenState> = _detailScreenState
 
     fun getStudentById(studentId:String){
         viewModelScope.launch {

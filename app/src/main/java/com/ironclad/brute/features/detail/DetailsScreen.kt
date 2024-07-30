@@ -22,6 +22,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.ironclad.brute.core.designsystem.components.BruteButton
 import com.ironclad.brute.core.designsystem.theme.BruteTheme
+import com.ironclad.brute.core.main.ScreenPortal
 import com.ironclad.brute.data.students.domain.model.Student
 import java.util.Locale
 
@@ -114,7 +115,7 @@ private fun Content(navController: NavController, student:Student) {
             Text(text = "Enrollment no: $enrollmentNo", style = MaterialTheme.typography.bodySmall)
 
             Spacer(modifier = Modifier.weight(1f))
-            BruteButton(onClick = { /*TODO*/ }, text = "Portal" )
+            BruteButton(onClick = { navController.navigate(ScreenPortal) }, text = "Portal" )
         }
     }
 

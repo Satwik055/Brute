@@ -45,7 +45,7 @@ class SearchScreenViewModel:ViewModel() {
                     val lowercaseInput = input.lowercase()
                     val student = repository.searchStudentByName(lowercaseInput)
                     when{
-                        input.isEmpty() -> throw SearchQueryEmpty()
+                        input.isBlank() -> throw SearchQueryEmpty()
                         student.isEmpty() -> throw NoResultFound()
                     }
                     _searchResultState.value = SearchResultState(student = student)

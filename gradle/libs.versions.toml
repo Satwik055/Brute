@@ -12,6 +12,7 @@ googleGmsGoogleServices = "4.4.2"
 firebaseFirestore = "25.0.0"
 navigationCompose = "2.8.0-beta05"
 serialization = "1.6.3"
+ktor = "2.3.12"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -37,6 +38,10 @@ androidx-navigation-compose = { group = "androidx.navigation", name = "navigatio
 
 #Kotlin serializer
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization"}
+
+#ktor
+ktor-core = {group ="io.ktor", name= "ktor-client-core", version.ref = "ktor"}
+ktor-cio = {group="io.ktor", name = "ktor-client-cio", version.ref= "ktor" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -52,7 +52,6 @@ private fun Content(navController: NavController) {
     var searchText by remember { mutableStateOf("") }
     val state = viewModel.searchResultState.value
 
-
     Column {
         BruteSearchView(
             value = searchText,
@@ -68,8 +67,6 @@ private fun Content(navController: NavController) {
             state.error.isNotEmpty() -> Text(text = state.error, color = Color.Red, modifier = Modifier.align(Alignment.CenterHorizontally))
             state.student.isNotEmpty() -> SearchResultsSection(searchResult = state.student, navController = navController)
         }
-
-
     }
 }
 

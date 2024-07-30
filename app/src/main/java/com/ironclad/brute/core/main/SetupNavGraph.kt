@@ -7,6 +7,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import com.ironclad.brute.features.detail.DetailScreen
 import com.ironclad.brute.features.home.HomeScreen
+import com.ironclad.brute.features.portal.SakshamPortalScreen
 import com.ironclad.brute.features.search.SearchScreen
 import kotlinx.serialization.Serializable
 
@@ -29,6 +30,9 @@ fun SetupNavGraph() {
             val args = it.toRoute<ScreenDetail>()
             DetailScreen(navController = navController, studentId = args.studentId)
         }
+        composable<ScreenPortal> {
+            SakshamPortalScreen()
+        }
     }
 }
 
@@ -37,6 +41,10 @@ object ScreenHome
 
 @Serializable
 object ScreenSearch
+
+@Serializable
+object ScreenPortal
+
 
 @Serializable
 data class ScreenDetail(
