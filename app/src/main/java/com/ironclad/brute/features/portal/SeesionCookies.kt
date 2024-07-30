@@ -5,6 +5,8 @@ import io.ktor.client.engine.cio.CIO
 import io.ktor.client.request.header
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody
+import io.ktor.http.ContentType
+import io.ktor.http.content.TextContent
 import io.ktor.http.setCookie
 import io.ktor.util.InternalAPI
 import kotlinx.coroutines.runBlocking
@@ -47,8 +49,8 @@ suspend fun getSessionCookie(username:String, password:String): String? {
 }
 
 fun main() {
-    val username = "2023/0399"
-    val password = "3773"
+    val username = "2023/0024"
+    val password = "7047"
 
     runBlocking {
         try{

@@ -12,7 +12,7 @@ class SakshamPortalViewModel:ViewModel() {
     val sessionCookieState: State<SessionCookieState> = _sessionCookieState
 
     init {
-        getSessionCookies("2023/0399", "3773")
+        getSessionCookies("2023%2F0008", "2195")
     }
 
     private fun getSessionCookies(username:String, password:String){

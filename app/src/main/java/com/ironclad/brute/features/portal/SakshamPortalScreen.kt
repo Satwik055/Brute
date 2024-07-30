@@ -31,7 +31,6 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.coroutines.launch
 
-@SuppressLint("SetJavaScriptEnabled")
 @Composable
 fun SakshamPortalScreen() {
 
@@ -40,9 +39,9 @@ fun SakshamPortalScreen() {
 
     println("Screen: ${sessionCookieState.cookie}")
 
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .background(Color.Red)){
+    Box(
+        modifier = Modifier.fillMaxSize()
+    ){
 
         if(sessionCookieState.isLoading){
             Column (
@@ -58,7 +57,7 @@ fun SakshamPortalScreen() {
             Text(text = sessionCookieState.error)
         }
         if(!sessionCookieState.cookie.isNullOrEmpty()){
-            SakshamPortalWebView(sessionCookie = "aziac5dazjfxz2kiaebvdvtq")
+            Content(sessionCookie = sessionCookieState.cookie)
         }
 
     }
@@ -67,7 +66,7 @@ fun SakshamPortalScreen() {
 
 @SuppressLint("SetJavaScriptEnabled")
 @Composable
-private fun SakshamPortalWebView(sessionCookie:String) {
+private fun Content(sessionCookie:String) {
 
     val url = "https://saksham.sitslive.com/StudentPanel/Pages/Dashboard"
     var isLoading by remember { mutableStateOf(true) }
@@ -90,7 +89,6 @@ private fun SakshamPortalWebView(sessionCookie:String) {
     )
 
     Box (modifier = Modifier.fillMaxSize()){
-
         AndroidView(
             factory = {
                 WebView(it).apply {
@@ -99,24 +97,15 @@ private fun SakshamPortalWebView(sessionCookie:String) {
                     settings.loadWithOverviewMode = true
                     settings.useWideViewPort = true
                     settings.setSupportZoom(true)
-                    settings.domStorageEnabled = true
                     layoutParams =
                         ViewGroup.LayoutParams(
                             ViewGroup.LayoutParams.MATCH_PARENT,
                             ViewGroup.LayoutParams.MATCH_PARENT
                         )
-                    val cookieManager = CookieManager.getInstance()
-                    cookieManager.removeAllCookie()
-                    cookieManager.setAcceptCookie(true)
-                    cookieManager.acceptCookie()
-                    cookieManager.acceptThirdPartyCookies(this)
-                    cookieManager.setCookie(url, "ASP.NET_SessionId=$sessionCookie")
-                    println("Set cookie: ${cookieManager.getCookie(url)}")
-
+                    setSakshamSessionCookie(sessionCookie)
                     loadUrl(url, headers)
                 }
             },
-//            update = {it.loadUrl(url, headers)}
         )
 
         if(isLoading){
@@ -125,6 +114,14 @@ private fun SakshamPortalWebView(sessionCookie:String) {
     }
 }
 
+
+fun setSakshamSessionCookie(cookie:String){
+    val url = "https://saksham.sitslive.com/StudentPanel/Pages/Dashboard"
+    val cookieManager = CookieManager.getInstance()
+
+    cookieManager.removeAllCookies(null)
+    cookieManager.setCookie(url, "ASP.NET_SessionId=$cookie")
+}
 
 
 
