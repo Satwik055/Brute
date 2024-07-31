@@ -21,7 +21,7 @@ import com.ironclad.brute.core.designsystem.components.BruteSearchbar
 import com.ironclad.brute.core.designsystem.theme.fontFamily
 import com.ironclad.brute.core.main.ScreenDetail
 import com.ironclad.brute.core.main.ScreenSearch
-import com.ironclad.brute.data.students.domain.model.Student
+import com.ironclad.brute.data.students.domain.model.StudentDto
 import com.ironclad.brute.features.home.sections.AllStudentSection
 import com.ironclad.brute.features.home.sections.RecentSection
 
@@ -41,19 +41,27 @@ fun HomeScreen(
             .padding(16.dp)
     )
     {
-        val allStudent = state.student
-        val recentSearches = allStudent.take(3)
-        Content(
-            navController = navController,
-            allStudents = allStudent,
-            recentSearches = recentSearches
-        )
+        if(state.error.isNotEmpty()){
+            Text(text = state.error)
+        }
+        if(state.isLoading){
+            CircularProgressIndicator()
+        }
+        else{
+            if(state.student != null){
+                Content(
+                    navController = navController,
+                    allStudents =  state.student,
+                    recentSearches = state.student.take(3)
+                )
+            }
+        }
     }
 }
 
 
 @Composable
-private fun Content(modifier: Modifier = Modifier, navController: NavController, allStudents:List<Student>, recentSearches:List<Student>) {
+private fun Content(modifier: Modifier = Modifier, navController: NavController, allStudents: List<StudentDto>, recentSearches: List<StudentDto>) {
     Column {
         Text(text = "Brute.",modifier = modifier.clickable { navController.navigate(ScreenDetail)  },fontFamily = fontFamily, fontSize = 31.sp, color = Color.White, fontWeight = FontWeight.SemiBold)
         Spacer(modifier = Modifier.height(28.dp))

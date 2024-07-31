@@ -4,8 +4,8 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ironclad.brute.data.students.data.StudentRepositoryImpl
 import com.ironclad.brute.core.exceptions.StudentNotFound
+import com.ironclad.brute.data.students.data.StudentRepositoryImpl
 import com.ironclad.brute.data.students.domain.repository.StudentRepository
 import kotlinx.coroutines.launch
 
@@ -23,7 +23,7 @@ class DetailScreenViewModel:ViewModel() {
             try {
                 val student = repository.getStudentById(studentId)
                 when{
-                    student.studentId.isEmpty() -> throw StudentNotFound()
+                    student.studentId!!.isEmpty() -> throw StudentNotFound()
                 }
                 _detailScreenState.value = DetailScreenState(student = student)
             }

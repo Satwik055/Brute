@@ -12,6 +12,7 @@ class HomeViewModel:ViewModel(){
 
     //TODO: Add Dependency Injection
     private val studentRepository: StudentRepository = StudentRepositoryImpl()
+//    private val studentRepository:SupabaseRepository = SupabaseRepositoryImpl()
 
     private val _allStudentState = mutableStateOf(AllStudentState())
     val allStudentState:State<AllStudentState> = _allStudentState

@@ -13,6 +13,7 @@ firebaseFirestore = "25.0.0"
 navigationCompose = "2.8.0-beta05"
 serialization = "1.6.3"
 ktor = "2.3.12"
+supabase= "2.5.4"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -42,9 +43,19 @@ kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serializa
 #ktor
 ktor-core = {group ="io.ktor", name= "ktor-client-core", version.ref = "ktor"}
 ktor-cio = {group="io.ktor", name = "ktor-client-cio", version.ref= "ktor" }
+ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
+ktor-utils = { module = "io.ktor:ktor-utils", version.ref = "ktor" }
+
+#Supabase
+supabase-postgrest = { module = "io.github.jan-tennert.supabase:postgrest-kt", version.ref = "supabase" }
+supabase-storage = { module = "io.github.jan-tennert.supabase:storage-kt", version.ref = "supabase" }
+supabase-gotrue = { module = "io.github.jan-tennert.supabase:gotrue-kt", version.ref = "supabase" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotiln-serializer-plugin = {id="org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin"}
 google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
+
+

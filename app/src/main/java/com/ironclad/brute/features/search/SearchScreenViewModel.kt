@@ -4,8 +4,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ironclad.brute.core.exceptions.SearchQueryEmpty
-import com.ironclad.brute.data.students.data.StudentRepositoryImpl
 import com.ironclad.brute.core.exceptions.NoResultFound
+import com.ironclad.brute.data.students.data.StudentRepositoryImpl
 import com.ironclad.brute.data.students.domain.repository.StudentRepository
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,6 +17,7 @@ import kotlinx.coroutines.launch
 
 class SearchScreenViewModel:ViewModel() {
 
+//    private val repository:StudentRepository = StudentRepositoryImpl()
     private val repository:StudentRepository = StudentRepositoryImpl()
 
     private val _searchResultState = mutableStateOf(SearchResultState())

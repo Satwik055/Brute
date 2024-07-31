@@ -73,8 +73,15 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
 
     //Ktor
-    implementation (libs.ktor.core)
-    implementation (libs.ktor.cio)
+    implementation(libs.ktor.core)
+    implementation(libs.ktor.cio)
+    implementation(libs.ktor.client.android)
+    implementation(libs.ktor.utils)
+
+    //Supabase
+    implementation(libs.supabase.postgrest)
+    implementation(libs.supabase.storage)
+    implementation(libs.supabase.gotrue)
 
 
 }

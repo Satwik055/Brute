@@ -1,32 +1,26 @@
 package com.ironclad.brute.data.students.domain.model
 
-import com.google.firebase.firestore.PropertyName
+import kotlinx.serialization.Serializable
 
 
-//time_taken -> timeTaken,
-//enrollemntNo. -> enrollmentNo,
-//admssionDate -> admissionDate,
-//worker_node -> workerNode,
-
-//(25.0.0) [CustomClassMapper]: No setter/field for admssionDate found on class com.ironclad.brute.data.students.domain.model.Student
-
-data class Student(
-    val password: String = "",
-    val studentName: String = "",
-    val category: String = "",
-    val course:String = "",
-    val phone: String = "",
-    val email: String = "",
-    val roll: String = "",
-    val address: String = "",
-    val fatherName: String = "",
-    val motherName: String = "",
-    val dob: String = "",
-    val gender: String = "",
-    val studentId: String = "",
-    val session: String = "",
-    val studentType: String = "",
-    val enrollmentNo: String = "",
-    val admissionDate: String = "",
-    val timeTaken: String = "",
+@Serializable
+data class StudentDto(
+    val password: String? = null,
+    val studentName: String?  = null,
+    val category: String? = null,
+    val course:String? = null,
+    val phone: String? = null,
+    val email: String? = null,
+    val roll: String? = null,
+    val address: String? = null,
+    val fatherName: String? = null,
+    val motherName: String? = null,
+    val dob: String? = null,
+    val gender: String? = null,
+    val studentId: String? = null,
+    val session: String? = null,
+    val studentType: String? = null,
+    val enrollmentNo: String? = null,
+    val admissionDate: String? = null,
+    val timeTaken: String? = null,
 )
