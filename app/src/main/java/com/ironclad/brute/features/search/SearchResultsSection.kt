@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.ironclad.brute.core.designsystem.components.BruteListItem
+import com.ironclad.brute.core.designsystem.components.BruteListItemDivider
 import com.ironclad.brute.core.designsystem.theme.Grey
 import com.ironclad.brute.core.designsystem.theme.onSurface
 import com.ironclad.brute.core.main.ScreenDetail
@@ -26,7 +27,6 @@ fun SearchResultsSection(
     LazyColumn(
         modifier = modifier
             .background(color = onSurface)
-            .padding(horizontal = 16.dp)
     ) {
         itemsIndexed(searchResult){index, student->
             BruteListItem(
@@ -36,7 +36,7 @@ fun SearchResultsSection(
                 onClick = { navController.navigate(ScreenDetail(student.studentId))}
             )
             if (index < searchResult.lastIndex)
-                Divider(thickness = Dp.Hairline, color = Grey)
+                BruteListItemDivider()
         }
     }
 }

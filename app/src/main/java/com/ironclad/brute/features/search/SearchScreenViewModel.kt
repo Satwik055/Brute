@@ -3,14 +3,11 @@ package com.ironclad.brute.features.search
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.ironclad.brute.data.students.data.repository.exceptions.SearchQueryEmpty
-import com.ironclad.brute.data.students.data.repository.StudentRepositoryImpl
-import com.ironclad.brute.data.students.data.repository.exceptions.NoResultFound
+import com.ironclad.brute.core.exceptions.SearchQueryEmpty
+import com.ironclad.brute.data.students.data.StudentRepositoryImpl
+import com.ironclad.brute.core.exceptions.NoResultFound
 import com.ironclad.brute.data.students.domain.repository.StudentRepository
 import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -25,8 +22,8 @@ class SearchScreenViewModel:ViewModel() {
     private val _searchResultState = mutableStateOf(SearchResultState())
     val searchResultState = _searchResultState
 
-    private val  _searchText = MutableStateFlow("")
-    private val  searchText = _searchText.asStateFlow()
+    private val _searchText = MutableStateFlow("")
+    val searchText = _searchText.asStateFlow()
 
     fun onSearchTextChange(text:String){
         _searchText.value = text

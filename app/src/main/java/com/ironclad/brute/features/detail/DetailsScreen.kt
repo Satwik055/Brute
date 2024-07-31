@@ -64,7 +64,7 @@ fun DetailScreen(modifier: Modifier = Modifier, navController: NavController, st
 @Composable
 private fun Content(navController: NavController, student:Student) {
 
-    val name = student.studentName.uppercase()
+    val name = student.studentName!!.uppercase()
     val roll=  student.roll
     val email = student.email
     val phone = student.phone
@@ -78,6 +78,7 @@ private fun Content(navController: NavController, student:Student) {
     val sakshamPassword = student.password
     val studentType = student.studentType
     val enrollmentNo = student.enrollmentNo
+    val category = student.category
 
 
 
@@ -103,7 +104,7 @@ private fun Content(navController: NavController, student:Student) {
             Spacer(modifier = Modifier.height(50.dp))
             Text(text = "Father's name: $fatherName", style = MaterialTheme.typography.bodySmall)
             Text(text = "Mother's name: $mothersName", style = MaterialTheme.typography.bodySmall)
-            Text(text = "Admission Date: $admissionDate", style = MaterialTheme.typography.bodySmall)
+            Text(text = "Category: $category", style = MaterialTheme.typography.bodySmall)
             Text(text = "Date of birth: $dob", style = MaterialTheme.typography.bodySmall)
         }
         Column(
@@ -112,6 +113,7 @@ private fun Content(navController: NavController, student:Student) {
             Spacer(modifier = Modifier.height(50.dp))
             Text(text = "Saksham password: $sakshamPassword", style = MaterialTheme.typography.bodySmall)
             Text(text = "Student type: $studentType", style = MaterialTheme.typography.bodySmall)
+            Text(text = "Admission Date: $admissionDate", style = MaterialTheme.typography.bodySmall)
             Text(text = "Enrollment no: $enrollmentNo", style = MaterialTheme.typography.bodySmall)
 
             Spacer(modifier = Modifier.weight(1f))

@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.ironclad.brute.core.designsystem.components.BruteListItem
+import com.ironclad.brute.core.designsystem.components.BruteListItemDivider
 import com.ironclad.brute.core.designsystem.theme.Grey
 import com.ironclad.brute.core.designsystem.theme.onSurface
 import com.ironclad.brute.core.main.ScreenDetail
@@ -26,17 +27,16 @@ fun AllStudentSection(
     LazyColumn(
         modifier = modifier
             .background(color = onSurface)
-            .padding(horizontal = 16.dp)
     ) {
         itemsIndexed(allStudents){index, student->
             BruteListItem(
-                name = student.studentName.uppercase(),
+                name = student.studentName,
                 roll = student.roll,
                 course = student.course,
                 onClick = { navController.navigate(ScreenDetail(student.studentId))}
             )
             if (index < allStudents.lastIndex)
-                Divider(thickness = Dp.Hairline, color = Grey)
+                BruteListItemDivider()
         }
     }
 }

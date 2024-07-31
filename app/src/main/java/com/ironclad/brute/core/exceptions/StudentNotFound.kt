@@ -1,4 +1,4 @@
-package com.ironclad.brute.data.students.data.repository.exceptions
+package com.ironclad.brute.core.exceptions
 
 import java.lang.Exception
 

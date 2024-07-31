@@ -37,7 +37,7 @@ fun BruteListItem(
         modifier = modifier
             .fillMaxWidth()
             .clickable { onClick.invoke() }
-            .padding(vertical = 12.dp),
+            .padding(vertical = 12.dp, horizontal = 16.dp),
 
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -53,29 +53,10 @@ fun BruteListItem(
 }
 
 
-
-
-@Preview
-@Composable
-fun PreviewBruteListItem(modifier: Modifier = Modifier) {
-    BruteListItem(name= "JOHN DOE", roll = "2023/3434", course = "Bcom(Hons)|E" , onClick = TODO())
-}
-
-fun Modifier.bottomBorder(strokeWidth: Dp, color: Color) = composed(
-    factory = {
-        val density = LocalDensity.current
-        val strokeWidthPx = density.run { strokeWidth.toPx() }
-
-        Modifier.drawBehind {
-            val width = size.width
-            val height = size.height - strokeWidthPx/2
-
-            drawLine(
-                color = color,
-                start = Offset(x = 0f, y = height),
-                end = Offset(x = width , y = height),
-                strokeWidth = strokeWidthPx
-            )
-        }
-    }
-)
+//
+//
+//@Preview
+//@Composable
+//fun PreviewBruteListItem(modifier: Modifier = Modifier) {
+//    BruteListItem(name= "JOHN DOE", roll = "2023/3434", course = "Bcom(Hons)|E" , onClick = TODO())
+//}

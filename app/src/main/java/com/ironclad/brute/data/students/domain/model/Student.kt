@@ -1,5 +1,15 @@
 package com.ironclad.brute.data.students.domain.model
 
+import com.google.firebase.firestore.PropertyName
+
+
+//time_taken -> timeTaken,
+//enrollemntNo. -> enrollmentNo,
+//admssionDate -> admissionDate,
+//worker_node -> workerNode,
+
+//(25.0.0) [CustomClassMapper]: No setter/field for admssionDate found on class com.ironclad.brute.data.students.domain.model.Student
+
 data class Student(
     val password: String = "",
     val studentName: String = "",
@@ -15,7 +25,8 @@ data class Student(
     val gender: String = "",
     val studentId: String = "",
     val session: String = "",
+    val studentType: String = "",
     val enrollmentNo: String = "",
     val admissionDate: String = "",
-    val studentType: String = ""
+    val timeTaken: String = "",
 )
